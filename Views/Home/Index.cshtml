@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ExportToExcelSample.Models.User>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="row">
+    <div class="col">
+        <a class="btn btn-primary" asp-controller="Home" asp-action="Csv">Export to Csv</a>
+        <a class="btn btn-primary" asp-controller="Home" asp-action="Excel">Export to Excel</a>
+
+        <hr />
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="text-center" width="50">ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th class="text-center" width="140">Serial Number</th>
+                        <th class="text-center" width="140">Joined On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@user.Id</td>
+                            <td>@user.Username</td>
+                            <td>@user.Email</td>
+                            <td class="text-center">@user.SerialNumber</td>
+                            <td class="text-center">@user.JoinedOn.ToString("MMM dd yyyy")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
